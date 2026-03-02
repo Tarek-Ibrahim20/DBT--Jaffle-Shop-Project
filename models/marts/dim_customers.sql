@@ -1,11 +1,4 @@
 
-{{config(
-    materialized='table',
-    schema='dbt_tebrahim'
-    )}}
-
-
-
 with customers as (
 
     select * from {{ ref('stg_shaffle_shop__customers') }}
