@@ -1,12 +1,19 @@
+
+{{config(
+    materialized='table',
+    schema='dbt_tebrahim'
+    )}}
+
+
+
 with customers as (
 
-    select * from {{ ref('stg_customers') }}
+    select * from {{ ref('stg_shaffle_shop__customers') }}
 
 ),
 
 orders as (
-
-    select * from {{ ref('stg_orders') }}
+    select * from {{ ref('stg_shaffle_shop__orders') }}
 
 ),
 
