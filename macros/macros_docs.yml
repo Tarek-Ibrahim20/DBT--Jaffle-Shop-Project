@@ -8,3 +8,5 @@ macros:
       - name: decimals
         description: "Number of decimal places to round to (default is 2)"
         type: integer
+  - name : limit_dev
+    description: "Limit the number of rows returned in development environment"
