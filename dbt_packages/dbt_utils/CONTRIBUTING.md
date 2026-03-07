@@ -2,6 +2,8 @@
 
 `dbt-utils` is open source software. It is what it is today because community members have opened issues, provided feedback, and [contributed to the knowledge loop](https://www.getdbt.com/dbt-labs/values/). Whether you are a seasoned open source contributor or a first-time committer, we welcome and encourage you to contribute code, documentation, ideas, or problem statements to this project.
 
+Remember: all PRs (apart from cosmetic fixes like typos) should be [associated with an issue](https://docs.getdbt.com/docs/contributing/oss-expectations#pull-requests).
+
 1. [About this document](#about-this-document)
 1. [Getting the code](#getting-the-code)
 1. [Setting up an environment](#setting-up-an-environment)
@@ -9,6 +11,8 @@
 1. [Testing dbt-utils](#testing)
 1. [Adding CHANGELOG Entry](#adding-changelog-entry)
 1. [Submitting a Pull Request](#submitting-a-pull-request)
+
+Enable greater collaboration by selecting ["Allow edits from maintainers"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork#enabling-repository-maintainer-permissions-on-existing-pull-requests) which will allow commits on your PR branch.
 
 ## About this document
 
@@ -56,9 +60,9 @@ A deep understanding of these tools in not required to effectively contribute to
 ## Implementation guidelines
 
 Ensure that changes will work on "non-core" adapters by:
-- dispatching any new macro(s) so non-core adapters can also use them (e.g. [the `star()` source](https://github.com/fishtown-analytics/dbt-utils/blob/master/macros/sql/star.sql))
+- dispatching any new macro(s) so non-core adapters can also use them (e.g. [the `star()` source](https://github.com/dbt-labs/dbt-utils/blob/main/macros/sql/star.sql))
 - using the `limit_zero()` macro in place of the literal string: `limit 0`
-- using `dbt_utils.type_*` macros instead of explicit datatypes (e.g. `dbt_utils.type_timestamp()` instead of `TIMESTAMP`
+- using [`type_*` macros](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#data-type-functions) instead of explicit datatypes (e.g. [`type_timestamp()`](https://docs.getdbt.com/reference/dbt-jinja-functions/cross-database-macros#type_timestamp) instead of `TIMESTAMP`
 
 ## Testing
 
@@ -72,7 +76,7 @@ See here for details for running existing integration tests and adding new ones:
 
 ## Adding CHANGELOG Entry
 
-Unlike `dbt-core`, we edit the `CHANGELOG.md` directly.
+We use [automatically generated release notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) to generate `CHANGELOG` entries. **Note:** Do not edit the `CHANGELOG.md` directly. Your modifications will be lost.
 
 You don't need to worry about which `dbt-utils` version your change will go into. Just create the changelog entry at the top of CHANGELOG.md and open your PR against the `main` branch. All merged changes will be included in the next minor version of `dbt-utils`. The maintainers _may_ choose to "backport" specific changes in order to patch older minor versions. In that case, a maintainer will take care of that backport after merging your PR, before releasing the new version of `dbt-utils`.
 
@@ -80,6 +84,6 @@ You don't need to worry about which `dbt-utils` version your change will go into
 
 A `dbt-utils` maintainer will review your PR. They may suggest code revision for style or clarity, or request that you add unit or integration test(s). These are good things! We believe that, with a little bit of help, anyone can contribute high-quality code.
 
-Automated tests run via CircleCI. If you're a first-time contributor, all tests (including code checks and unit tests) will require a maintainer to approve. Changes in the `dbt-utils` repository trigger integration tests against Postgres [TODO]. dbt Labs also provides CI environments in which to test changes to other adapters, triggered by PRs in those adapters' repositories, as well as periodic maintenance checks of each adapter in concert with the latest `dbt-utils` code changes.
+Automated tests run via CircleCI. If you're a first-time contributor, all tests (including code checks and unit tests) will require a maintainer to approve. Changes in the `dbt-utils` repository trigger integration tests.
 
 Once all tests are passing and your PR has been approved, a `dbt-utils` maintainer will merge your changes into the active development branch. And that's it! Happy developing :tada:

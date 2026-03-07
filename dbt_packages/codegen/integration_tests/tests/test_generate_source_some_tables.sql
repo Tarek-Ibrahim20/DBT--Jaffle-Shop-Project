@@ -6,7 +6,8 @@
     database_name=target.database,
     table_names=['data__a_relation'],
     generate_columns=True,
-    include_descriptions=True
+    include_descriptions=True,
+    include_data_types=False
 ) %}
 
 
@@ -14,7 +15,7 @@
 version: 2
 
 sources:
-  - name: {{ raw_schema | trim }}
+  - name: {{ raw_schema | trim | lower }}
     description: ""
     tables:
       - name: data__a_relation

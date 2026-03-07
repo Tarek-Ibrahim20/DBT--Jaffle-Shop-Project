@@ -6,6 +6,7 @@
 %}
 
 {% set expected_base_model %}
+
 with source as (
 
     select * from {%raw%}{{ source('codegen_integration_tests__data_source_schema', 'codegen_integration_tests__data_source_table_case_sensitive') }}{%endraw%}
@@ -15,8 +16,8 @@ with source as (
 renamed as (
 
     select
-        {% if target.type == "bigquery" %}My_Integer_Col{% else %}"My_Integer_Col"{% endif %},
-        {% if target.type == "bigquery" %}My_Bool_Col{% else %}"My_Bool_Col"{% endif %}
+        {{ adapter.quote("My_Integer_Col") }},
+        {{ adapter.quote("My_Bool_Col") }}
 
     from source
 
