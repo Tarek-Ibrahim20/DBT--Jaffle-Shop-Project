@@ -1,0 +1,65 @@
+version: 2
+
+sources:
+  - name: raw_events
+    database: raw
+    tables:
+      - name: events_jan
+        columns:
+          - name: event_id
+            data_type: varchar
+          - name: user_id
+            data_type: number
+          - name: event_type
+            data_type: varchar
+          - name: event_date
+            data_type: date
+          - name: page_url
+            data_type: varchar
+          - name: amount
+            data_type: float
+
+      - name: events_feb
+        columns:
+          - name: event_id
+            data_type: varchar
+          - name: user_id
+            data_type: number
+          - name: event_type
+            data_type: varchar
+          - name: event_date
+            data_type: date
+          - name: page_url
+            data_type: varchar
+          - name: amount
+            data_type: float
+
+      - name: events_mar
+        columns:
+          - name: event_id
+            data_type: varchar
+          - name: user_id
+            data_type: number
+          - name: event_type
+            data_type: varchar
+          - name: event_date
+            data_type: date
+          - name: page_url
+            data_type: varchar
+          - name: amount
+            data_type: float
+
+      - name: events_apr
+        columns:
+          - name: event_id
+            data_type: varchar
+          - name: user_id
+            data_type: number
+          - name: event_type
+            data_type: varchar
+          - name: event_date
+            data_type: date
+          - name: page_url
+            data_type: varchar
+          - name: amount
+            data_type: float
