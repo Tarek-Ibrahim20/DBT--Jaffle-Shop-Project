@@ -1,4 +1,4 @@
-{% macro granting_access (database = target.database ,schema = target.schema , role= target.role) %}
+{% macro granting_access (database = target.database ,schema = target.schema , role= 'BI_ANALYST') %}
 
 {% set sql_grant %}
     grant usage on database {{database}} to {{role}};
@@ -8,6 +8,6 @@
 
 {% do run_query(sql_grant)%}
 
-{{ log ( 'granting usage on database ' ~ database ~ ' & schema ' ~ schema ~ 'to role ' ~ role , info  )}}
+{{ log ( 'granting usage on database ' ~ database ~ ' & schema ' ~ schema ~ ' to role ' ~ role , info= true  )}}
 
 {%endmacro%}

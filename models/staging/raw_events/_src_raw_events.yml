@@ -4,6 +4,7 @@ sources:
   - name: raw_events
     database: raw
     tables:
+      - name: events_tarek
       - name: events_jan
         columns:
           - name: event_id

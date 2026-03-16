@@ -1,0 +1,1 @@
+{{ union_by_prefix(database='RAW', schema='RAW_EVENTS', prefix='EVENTS_') }}
