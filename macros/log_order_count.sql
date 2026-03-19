@@ -1,5 +1,11 @@
 {% macro log_order_count() %}
 
+     {%if not execute %}
+        {{ log("This macro only works when dbt is executing a run", info=true) }}
+        {{ return() }}
+    {% endif %}
+
+    {%else %}
     {% set sql %}
         select distinct status, count(*) as cnt
         from raw.jaffle_shop.orders

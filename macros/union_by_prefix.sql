@@ -1,4 +1,4 @@
-{% macro union_by_prefix(database, schema, prefix) %}
+{% macro union_by_prefix(database='raw', schema='raw_events', prefix='EVENTS_') %}
 
     {# execute guard — always first #}
     {% if not execute %}
@@ -17,9 +17,12 @@
         info=true
     ) }}
 
+    {% for relation in relations %}
+        {{ log("  Adding: " ~ relation.identifier, info=true) }}
+    {% endfor %}
+
     {% set union_sql %}
         {% for relation in relations %}
-            {{ log("  Adding: " ~ relation.identifier, info=true) }}
             {%- if not loop.first %} union all {% endif %}
             select * from {{ relation }}
         {% endfor %}

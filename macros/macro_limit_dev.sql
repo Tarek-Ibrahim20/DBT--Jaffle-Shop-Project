@@ -1,5 +1,5 @@
-{% macro limit_dev() %}
+{% macro limit_dev(n=20) %}
     {%if target.name == 'dev' %}
-        limit 10
+        limit {{n}}
     {% endif %}
 {% endmacro %}      
